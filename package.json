@@ -1,0 +1,20 @@
+{
+  "name": "na-example",
+  "version": "1.0.0",
+  "description": "Node - Github Action - Dockhub",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZindexYG/na-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZindexYG/na-example/issues"
+  },
+  "homepage": "https://github.com/ZindexYG/na-example#readme"
+}
