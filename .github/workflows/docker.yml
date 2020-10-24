@@ -15,7 +15,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: zindexyg/na-example
+  IMAGE_NAME: na-example
   DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
@@ -33,9 +33,9 @@ jobs:
 
       - name: Push image to DockHub
         run: |
-          IMAGE_ID=${IMAGE_NAME}
+          IMAGE_ID=${DOCKER_USERNAME}/${IMAGE_NAME}
 
-          # 转换城小写
+          # 转换成小写
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
 
           # 从版本中删除 github-ref Or github-sha 前缀
