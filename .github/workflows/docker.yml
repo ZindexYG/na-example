@@ -26,14 +26,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image
-        run: docker build -t ${IMAGE_NAME} .
+        run: docker build -t $IMAGE_NAME .
 
       - name: Log into DockHub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
 
       - name: Push image to DockHub
         run: |
-          IMAGE_ID=${DOCKER_USERNAME}/${IMAGE_NAME}
+          IMAGE_ID=$DOCKER_USERNAME/$IMAGE_NAME
 
           # 转换成小写
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -45,7 +45,7 @@ jobs:
           # [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
           # Use Docker `latest` tag convention
-          [ "$VERSION" == "main" ] && VERSION=latest
+          # [ "$VERSION" == "main" ] && VERSION=latest
 
           echo IMAGE_ID=$IMAGE_ID
           # 保留前 7 位
