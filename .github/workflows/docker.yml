@@ -45,7 +45,7 @@ jobs:
           # [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
           # Use Docker `latest` tag convention
-          # [ "$VERSION" == "main" ] && VERSION=latest
+          [ "${{ github.ref }}" == "main" ] && VERSION=latest
 
           echo IMAGE_ID=$IMAGE_ID
           # 保留前 7 位
@@ -54,4 +54,5 @@ jobs:
           docker images
 
           docker tag $IMAGE_NAME ${IMAGE_ID}:${VERSION_ID}
-          docker push $IMAGE_ID:$VERSION_ID
+      - name: Push
+        run: docker push $IMAGE_ID:$VERSION_ID
