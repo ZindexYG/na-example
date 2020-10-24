@@ -38,8 +38,8 @@ jobs:
           # 转换城小写
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
 
-          # 从版本中删除 git ref 前缀
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # 从版本中删除 github-ref Or github-sha 前缀
+          VERSION=$(echo "${{ github.sha }}" | sed -e 's,.*/\(.*\),\1,')
 
           # 从标签名称中删除 v 前缀
           # [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
