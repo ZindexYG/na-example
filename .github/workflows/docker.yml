@@ -33,7 +33,7 @@ jobs:
 
       - name: Push image to DockHub
         run: |
-          IMAGE_ID=zindexyg/$IMAGE_NAME
+          IMAGE_ID=zindexyg/na-example
 
           # 转换城小写
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
