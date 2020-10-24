@@ -15,7 +15,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: zindexyg/na-example
+  IMAGE_NAME: na-example
   DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
@@ -33,7 +33,7 @@ jobs:
 
       - name: Push image to DockHub
         run: |
-          IMAGE_ID=$IMAGE_NAME
+          IMAGE_ID=zindexyg/$IMAGE_NAME
 
           # 转换城小写
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -51,5 +51,5 @@ jobs:
           # 保留前 7 位
           echo VERSION_ID=${VERSION:0:7}
 
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION_ID
+          docker tag $IMAGE_ID $IMAGE_ID:$VERSION_ID
           docker push $IMAGE_ID:$VERSION_ID
