@@ -35,7 +35,7 @@ jobs:
       - run: |
           IMAGE_ID=$IMAGE_NAME
 
-          # 转换城小写
+          # 转换小写
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
 
           # 从版本中删除 git ref 前缀
