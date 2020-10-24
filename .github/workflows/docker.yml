@@ -51,5 +51,5 @@ jobs:
           # 保留前 7 位
           echo VERSION_ID=${VERSION:0:7}
 
-          docker tag $IMAGE_NAME zindexyg/na-example:$VERSION_ID
-          docker push zindexyg/na-example:$VERSION_ID
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION_ID
+          docker push $IMAGE_ID:$VERSION_ID
