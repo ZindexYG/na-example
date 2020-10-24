@@ -39,7 +39,7 @@ jobs:
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
 
           # 从版本中删除 git ref 前缀
-          VERSION=${$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,'):0:7}
+          VERSION=${$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')}
 
           # 从标签名称中删除 v 前缀
           #[[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
@@ -51,7 +51,7 @@ jobs:
 
           echo IMAGE_ID=$IMAGE_ID
           # 保留前 7 位
-          echo VERSION=$VERSION
+          echo VERSION_ID=${VERSION:0:7}
 
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION_ID
+          docker push $IMAGE_ID:$VERSION_ID
