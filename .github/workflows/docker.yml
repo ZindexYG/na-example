@@ -53,6 +53,8 @@ jobs:
 
           docker images
 
-          docker tag $IMAGE_NAME ${IMAGE_ID}:${VERSION_ID}
-      - name: Push
-        run: docker push $IMAGE_ID:$VERSION_ID
+          docker tag $IMAGE_NAME ${IMAGE_ID}:latest
+
+          echo VERSION_ID='====='
+
+          docker push $IMAGE_ID:$VERSION_ID
