@@ -47,18 +47,14 @@ jobs:
           # Use Docker `latest` tag convention
           [ "${{ github.ref }}" == "main" ] && VERSION=latest
 
+          # 保留前 7 位
           VERSION=${VERSION:0:7}
 
+          # 打印 IMAGE_ID
           echo IMAGE_ID=$IMAGE_ID
-          # 保留前 7 位
+          # 打印 VERSION
           echo VERSION=$VERSION
 
-          docker images
-
           docker tag $IMAGE_NAME ${IMAGE_ID}:$VERSION
-
-          echo VERSION_ID='====='
-          docker images
-          echo VERSION_ID='====='
 
           docker push $IMAGE_ID:$VERSION
