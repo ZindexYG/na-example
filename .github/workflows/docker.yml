@@ -47,9 +47,11 @@ jobs:
           # Use Docker `latest` tag convention
           [ "${{ github.ref }}" == "main" ] && VERSION=latest
 
+          VERSION=${VERSION:0:7}
+
           echo IMAGE_ID=$IMAGE_ID
           # 保留前 7 位
-          echo VERSION=${VERSION:0:7}
+          echo VERSION=$VERSION
 
           docker images
 
